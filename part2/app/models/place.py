@@ -22,12 +22,7 @@ class Place(BaseModel):
 
     @title.setter
     def title(self, value):
-        if (
-            not hasattr(self, "_place__title")
-            or not self.__title
-            or not isinstance(self.__title, str)
-            or len(self.__title) > 100
-        ):
+        if not isinstance(value, str) or not value or len(value) > 100:
             raise ValueError(
                 "title is required and must be a string with max 100 characters."
             )
