@@ -40,15 +40,27 @@ main .container {
 
 .place-card {
   margin: 20px;
-  flex: 1;
-  min-width: 250px;
-  max-width: 300px;
-  padding: 0.5rem 1rem;
+  flex: 0 1 300px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: rgb(167, 204, 229);
   text-align: center;
-  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.place-card:hover {
+  transform: translateY(-5px);
+}
+
+.place-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.place-card .price {
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .place-details .place-info {
@@ -57,18 +69,16 @@ main .container {
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: rgb(167, 204, 229);
-  max-width: 1000px;
 }
 
 .review-card {
-  margin: 1.5rem auto;
-  padding: 1.5rem;
+  margin: 20px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: rgb(167, 204, 229);
   text-align: left;
   width: 100%;
-  max-width: 1000px;
 }
 
 .add-review {
@@ -78,7 +88,6 @@ main .container {
   border-radius: 10px;
   background-color: rgb(167, 204, 229);
   width: 100%;
-  max-width: 1000px;
 }
 
 .add-review form {
@@ -138,7 +147,7 @@ footer {
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -179,3 +188,34 @@ footer {
 .navbar .logo img {
   height: 30px;
 }
+
+form label {
+  font-weight: bold;
+  margin-top: 1rem;
+  display: block;
+}
+
+form textarea, form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #ff5a5f;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #e14b4f;
+}
+
