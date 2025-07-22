@@ -39,6 +39,14 @@ main {
     background-color: rgb(167, 204, 229);
 }
 
+.place-details-card {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: rgb(167, 204, 229);
+}
+
 .review-card {
     margin: 20px;
     padding: 10px;
@@ -61,3 +69,4 @@ main {
 .login-button:hover {
     background-color: #2bf550;
 }
+
