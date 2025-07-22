@@ -8,7 +8,6 @@
   <link rel="icon" href="icon.png" type="image/png" />
 </head>
 <body>
-  <!-- Le header sera injecté ici par scripts.js -->
   <header id="header"></header>
 
   <main class="container">
@@ -25,7 +24,19 @@
       <article class="place-card">
         <h3>Beautiful Beach House</h3>
         <p class="price">Price per night: $150</p>
-        <button class="details-button">View Details</button>
+        <button class="details-button" onclick="window.location.href='place_details.html?id=1'">View Details</button>
+      </article>
+
+      <article class="place-card">
+        <h3>Cozy Cabin</h3>
+        <p class="price">Price per night: $100</p>
+        <button class="details-button" onclick="window.location.href='place_details.html?id=2'">View Details</button>
+      </article>
+
+      <article class="place-card">
+        <h3>Modern Apartment</h3>
+        <p class="price">Price per night: $200</p>
+        <button class="details-button" onclick="window.location.href='place_details.html?id=3'">View Details</button>
       </article>
     </section>
   </main>

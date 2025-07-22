@@ -1,16 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Inject header
   const header = document.getElementById("header");
   if (header) {
     header.innerHTML = `
-      <nav>
-        <a href="index.html" class="logo">
-          <img src="images/logo.png" alt="MyBnB logo" />
-        </a>
-        <a href="login.html" class="login-button">Login</a>
+      <nav class="navbar">
+        <div class="nav-left">
+          <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="MyBnB logo" />
+          </a>
+        </div>
+        <div class="nav-right">
+          <a href="login.html" class="login-button">Login</a>
+        </div>
       </nav>
     `;
   }
 
+  // Inject footer
   const footer = document.getElementById("footer");
   if (footer) {
     footer.innerHTML = `
@@ -18,10 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
+  // Handle details buttons redirection
   const detailButtons = document.querySelectorAll(".details-button");
   detailButtons.forEach(button => {
     button.addEventListener("click", () => {
-       window.location.href = "place.html";
+      window.location.href = "place.html";
     });
   });
 });
