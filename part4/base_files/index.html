@@ -9,7 +9,10 @@
 <body>
     <header>
         <nav>
-            <a href="login.html" id="login-link">Login</a>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="MyBnB logo">
+            </a>
+            <a href="login.html" id="login-link" class="login-button">Login</a>
         </nav>
     </header>
     <main>
@@ -20,9 +23,17 @@
             </select>
         </section>
         <section id="places-list">
-            <!-- List of places will be populated dynamically -->
+            <article class="place-card">
+                <h3>Name</h3>
+                <p class="price">$/ night</p>
+                <button class="details-button">View Details</button>
+
+            </article>
         </section>
     </main>
     <script src="scripts.js"></script>
+    <footer>
+        <p>all rights reserved.</p>
+    </footer>
 </body>
 </html>
