@@ -120,19 +120,37 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }
   }
-   const loginForm = document.getElementById("login-form");
 
+  // Login form event listener
+  const loginForm = document.getElementById("login-form");
   if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
+    loginForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
-      console.log("Email:", email);
-      console.log("Password:", password);
+      try {
+        const response = await fetch("http://127.0.0.1:8000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ email, password })
+        });
 
+        if (response.ok) {
+          const data = await response.json();
+          document.cookie = `token=${data.access_token}; path=/`;
+          localStorage.setItem("loggedIn", "true");
+          window.location.href = "index.html";
+        } else {
+          const error = await response.text();
+          alert("Login failed: " + error);
+        }
+      } catch (err) {
+        alert("Login error: " + err.message);
+      }
     });
   }
 });
-
