@@ -1,93 +1,187 @@
-* {
+/* ===== CSS Reset (simplifié) ===== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
 }
 
+/* ===== Root Variables ===== */
+:root {
+  --color-bg: linear-gradient(150deg, #5bcbf4, #675ae2);
+  --color-primary: #ff5a5f;
+  --color-primary-hover: #e14b4f;
+  --color-success: #2bf550;
+  --color-light: #f3f3f3;
+  --color-dark: #333;
+  --color-text: #333;
+  --color-border: #ddd;
+  --card-bg: linear-gradient(135deg, #baebc4 0%, #3beeb3 100%);
+
+
+
+  --font-base: Arial, sans-serif;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.3rem;
+  --font-size-lg: 1.6rem;
+  --radius: 10px;
+  --padding-card: 10px;
+  --margin-card: 20px;
+}
+
+/* ===== Global Styles ===== */
 body {
-  background-color: #f0f8ff;
-  color: #333;
-  height: 100%;
-  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-base);
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
-.logo img {
-  height: 30px;
-}
-
-h2 {
+h1, h2 {
   text-align: center;
   margin-bottom: 1rem;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 1rem;
 }
 
 main {
   padding: 2rem;
 }
 
-main .container {
+.container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
+/* ===== Navbar & Header ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-dark);
+  color: white;
+}
+
+.navbar .logo img {
+  height: 30px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--color-dark);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* ===== Buttons ===== */
+.login-button,
+.details-button,
+form button,
+.add-review button {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: var(--color-success);
+}
+
+.details-button:hover,
+form button:hover,
+.add-review button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* ===== Place Cards ===== */
 .place-card {
-  margin: 20px;
-  flex: 0 1 300px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: rgb(167, 204, 229);
+  flex: 1 1 300px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  padding: var(--padding-card);
+  margin: var(--margin-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
   text-align: center;
   transition: transform 0.2s ease-in-out;
 }
+
+
 .place-card:hover {
   transform: translateY(-5px);
 }
 
 .place-card h3 {
-  font-size: 1.3rem;
+  font-size: var(--font-size-md);
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
 .place-card .price {
-  font-size: 1rem;
+  font-size: var(--font-size-sm);
   margin-bottom: 1rem;
 }
 
+/* ===== Place Details ===== */
 .place-details .place-info {
-  margin: 20px auto;
+  margin: var(--margin-card) auto;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: rgb(167, 204, 229);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  text-align: center;
 }
 
+/* ===== Review Cards ===== */
 .review-card {
-  margin: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: rgb(167, 204, 229);
+  margin: var(--margin-card) auto;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
   text-align: left;
   width: 100%;
 }
 
+/* ===== Add Review Form ===== */
 .add-review {
   margin: 2rem auto;
   padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: rgb(167, 204, 229);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
   width: 100%;
+  text-align: left;
 }
 
 .add-review form {
@@ -106,96 +200,15 @@ main .container {
   width: 100%;
 }
 
-.add-review button {
-  background-color: #ff5a5f;
-  color: white;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.add-review button:hover {
-  background-color: #e14b4f;
-}
-
-.login-button,
-.details-button {
-  background-color: #ff5a5f;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.login-button:hover {
-  background-color: #2bf550;
-}
-
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-  margin-top: auto;
-}
-
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.places {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-#places-list {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #333;
-  color: white;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-}
-
-.navbar .logo img {
-  height: 30px;
-}
-
+/* ===== Forms ===== */
 form label {
   font-weight: bold;
   margin-top: 1rem;
   display: block;
 }
 
-form textarea, form select {
+form textarea,
+form select {
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem;
@@ -205,17 +218,36 @@ form textarea, form select {
   font-size: 1rem;
 }
 
-form button {
-  background-color: #ff5a5f;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
+/* ===== Places List Grid ===== */
+#places-list,
+.places {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+#filter {
+    text-align: center;
+}
+
+#add-review > h2 {
+    text-align: left;
+}
+
+#reviews > h2 {
+    text-align: left;
+}
+
+.review-title {
+  text-align: center;
+  font-size: 2.5rem;
   font-weight: bold;
-  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
-form button:hover {
-  background-color: #e14b4f;
+.add-review h2 {
+  text-align: left;
 }
-

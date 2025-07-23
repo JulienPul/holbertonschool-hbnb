@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     footer.innerHTML = `<p>&copy; 2025 MyBnB. All rights reserved.</p>`;
   }
 
-  // Remplir le filtre de prix
+  // Price filter
   const prices = [50, 100, 150, 200, 250, 300];
   const select = document.getElementById("price-filter");
   if (select) {
@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
       select.appendChild(option);
     });
 
-    // Fonction de filtrage
     select.addEventListener("change", (e) => {
       const maxPrice = parseInt(e.target.value);
       const placeCards = document.querySelectorAll(".place-card");
@@ -52,15 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Boutons détails
+  // Detail buttons
   const detailButtons = document.querySelectorAll(".details-button");
   detailButtons.forEach(button => {
     button.addEventListener("click", () => {
-      window.location.href = "place.html"; // Peut être remplacé selon l'ID
+      const placeId = button.getAttribute("data-id");
+      window.location.href = `place.html?id=${placeId}`;
     });
   });
 
-  // Gestion de l’envoi du formulaire d’avis
+  // Review form handling
   const form = document.getElementById("review-form");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -68,7 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const text = document.getElementById("review").value;
       const rating = document.getElementById("rating").value;
       alert(`Review submitted:\nRating: ${rating} star(s)\nComment: ${text}`);
-      form.reset(); // Clear form
+      form.reset();
     });
+  }
+
+  const placeName = document.getElementById("place-name");
+  const urlParams = new URLSearchParams(window.location.search);
+  const placeId = urlParams.get("id");
+
+  const placeData = {
+    1: "Beautiful Beach House",
+    2: "Cozy Cabin",
+    3: "Modern Apartment"
+  };
+
+  if (placeName && placeId && placeData[placeId]) {
+    placeName.innerHTML = `<h2 class="review-title">Reviewing: ${placeData[placeId]}</h2>`;
   }
 });
