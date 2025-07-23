@@ -60,18 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Review form handling
-  const form = document.getElementById("review-form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const text = document.getElementById("review").value;
-      const rating = document.getElementById("rating").value;
-      alert(`Review submitted:\nRating: ${rating} star(s)\nComment: ${text}`);
-      form.reset();
-    });
-  }
-
+  // Title injection
   const placeName = document.getElementById("place-name");
   const urlParams = new URLSearchParams(window.location.search);
   const placeId = urlParams.get("id");
@@ -85,4 +74,51 @@ document.addEventListener("DOMContentLoaded", () => {
   if (placeName && placeId && placeData[placeId]) {
     placeName.innerHTML = `<h2 class="review-title">Reviewing: ${placeData[placeId]}</h2>`;
   }
+
+  // Add review section based on login
+  const reviewAction = document.getElementById("review-action");
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+
+  if (reviewAction) {
+    if (isLoggedIn) {
+      reviewAction.innerHTML = `
+        <section class="add-review">
+          <h2>Add a Review</h2>
+          <form id="review-form" class="form">
+            <label for="review">Your Review:</label>
+            <textarea id="review" name="review" required></textarea>
+
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+              <option value="">Select a rating</option>
+              <option value="1">★☆☆☆☆</option>
+              <option value="2">★★☆☆☆</option>
+              <option value="3">★★★☆☆</option>
+              <option value="4">★★★★☆</option>
+              <option value="5">★★★★★</option>
+            </select>
+
+            <button type="submit" class="login-button">Submit</button>
+          </form>
+        </section>
+      `;
+
+      const form = document.getElementById("review-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = document.getElementById("review").value;
+        const rating = document.getElementById("rating").value;
+        alert(`Review submitted:\nRating: ${rating} star(s)\nComment: ${text}`);
+        form.reset();
+      });
+
+    } else {
+      reviewAction.innerHTML = `
+        <div style="text-align: center; margin-top: 1rem;">
+          <a href="login.html" class="login-button">Login to Add Review</a>
+        </div>
+      `;
+    }
+  }
 });
+
